@@ -8,8 +8,6 @@ import {
 } from './actions';
 import { ActionTypes } from './types';
 
-axios.defaults.baseURL = 'http://localhost:8000';
-
 function* getPositionRequestHandler(
   payload: ReturnType<typeof getPositionRequest>,
 ) {
@@ -17,7 +15,7 @@ function* getPositionRequestHandler(
     headers: {
       'Content-Type': 'application/json',
     },
-    url: '/api/movement',
+    url: 'api/movement',
     method: 'POST',
     data: {
       pos: payload.payload.pos,

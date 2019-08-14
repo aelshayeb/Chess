@@ -1,6 +1,6 @@
 const chai = require('chai');
 const expect = chai.expect;
-const url = 'http://localhost:8000';
+const url = 'http://localhost:8081';
 const request = require('supertest')(url);
 
 describe('Movement Api:', () => {
