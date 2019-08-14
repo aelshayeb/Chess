@@ -8,7 +8,8 @@ import { getPositionRequest } from '../../redux/api/actions';
 import './styles.scss';
 
 interface IProps {
-  availablePosition: string[];
+  first: string[];
+  second: string[];
   getPosition: Function;
 }
 
@@ -24,22 +25,32 @@ class Board extends React.Component<IProps, IState> {
   };
 
   isOverlay = (x: number, y: number) => {
-    const { availablePosition } = this.props;
+    const { first } = this.props;
     const { posX, posY } = this.state;
 
     if (posX === -1 || posY === -1) return false;
-    if (typeof availablePosition === 'undefined') return false;
+    if (typeof first === 'undefined') return false;
 
-    return availablePosition.includes(positionToString(x, y));
+    return first.includes(positionToString(x, y));
   };
 
+  isSecondOverlay = (x: number, y: number) => {
+    const { second } = this.props;
+    const { posX, posY } = this.state;
+
+    if (posX === -1 || posY === -1) return false;
+    if (typeof second === 'undefined') return false;
+
+    return second.includes(positionToString(x, y));
+  }
+
   onHandleClick = (x: number, y: number) => {
-    const { getPosition, availablePosition } = this.props;
+    const { getPosition, first: availablePositions } = this.props;
     const { posX, posY } = this.state;
 
     if (
       (posX === -1 && posY === -1) ||
-      availablePosition.includes(positionToString(x, y))
+      availablePositions.includes(positionToString(x, y))
     ) {
       this.setState({
         posX: x,
@@ -70,7 +81,12 @@ class Board extends React.Component<IProps, IState> {
         className="square"
         onClick={() => this.onHandleClick(x, y)}
       >
-        <BoardSquare posX={x} posY={y} isOverlay={this.isOverlay(x, y)}>
+        <BoardSquare
+          posX={x}
+          posY={y}
+          isOverlay={this.isOverlay(x, y)}
+          isSecondOverlay={this.isSecondOverlay(x,y)}
+        >
           {this.renderPiece(x, y)}
         </BoardSquare>
       </div>
@@ -90,7 +106,8 @@ class Board extends React.Component<IProps, IState> {
 }
 
 const mapStateToProps = (state: any) => ({
-  availablePosition: state.Api.data,
+  first: state.Api.data.first,
+  second: state.Api.data.second,
 });
 
 const mapDispatchToProps = {
