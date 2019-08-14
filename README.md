@@ -27,27 +27,34 @@ Note: Use `yarn` rather than `npm`
 Install dependencies
 
 ```
-yarn install:server
-yarn install:client
+yarn install
+yarn client:install
 ```
 
 ```
 yarn dev
+yarn server:dev
 yarn client:dev
-yarn storybook
 ```
 
 ### npm scripts
 
-- `yarn start` - run server in production mode
-- `yarn dev` - run server in development mode
+- `yarn start` - run app in production mode
+- `yarn dev` - run app in development mode
+- `yarn server:prod` - run server in production mode
+- `yarn server:dev` - run server in development mode
+- `yarn server:test` - run test for server
+- `yarn client:install` - install client dependency
+- `yarn client:build` - build client
+- `yarn client:dev` - run client dev server
+- `yarn client:test` - test client
 
 ## Running unit tests
 
 - Unit test with jest/enzyme
 
 ```
-yarn test:client
+yarn client:test
 ```
 
 ## Code standard
@@ -58,10 +65,6 @@ yarn test:client
 ## Built With
 
 - [React](https://reactjs.org) - React.JS
-
-## Authors
-
-- **Chris Yu**
 
 ## License
 

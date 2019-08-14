@@ -5,17 +5,21 @@
   "main": "server.js",
   "scripts": {
     "client:dev": "npm start --prefix client",
+    "client:install": "yarn install --cwd client",
+    "client:build": "npm run build --prefix client",
     "start": "npm run server:prod",
     "server:dev": "nodemon ./server.js",
     "server:prod": "node ./server.js",
     "dev": "concurrently \"npm run server:dev\" \"npm run client:dev\"",
-    "test": "mocha ./api/getMove.test.js"
+    "server:test": "mocha ./api/getMove.test.js",
+    "client:test": "npm run test --prefix client",
+    "client:test:ci": "CI=true npm run test --prefix client"
   },
   "dependencies": {
-    "body-parser": "^1.18.3",
-    "compression": "^1.7.3",
+    "body-parser": "^1.19.0",
+    "compression": "^1.7.4",
     "cors": "^2.8.5",
-    "express": "^4.16.4",
+    "express": "^4.17.1",
     "morgan": "^1.9.1"
   },
   "devDependencies": {
