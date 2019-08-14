@@ -1,0 +1,1 @@
+As a user, initiate your knight position by clicking on a square in the board. The red squares represent the first movement and the blue squares represent the second movement. You can only move the knight to the highlighted squares, which change after each movement to reflect the knight's next possible movement.
