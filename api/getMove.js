@@ -53,7 +53,7 @@ module.exports = (req, res) => {
     movement.forEach(move => {
       const next = getNextMovePos(one, move);
 
-      if (next && !semiResults.includes(next)) {
+      if (next && !semiResults.includes(next) && next !== pos) {
         semiResults.push(next);
       }
     })

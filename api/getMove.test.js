@@ -62,7 +62,6 @@ describe('Movement Api:', () => {
             'C8',
             'C4',
             'A8',
-            'A4',
             'D7',
             'D5',
             'D3',
