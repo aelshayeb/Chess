@@ -39,6 +39,7 @@ module.exports = (req, res) => {
   ];
 
   const results = [];
+  const semiResults = [];
 
   movement.forEach(move => {
     const next = getNextMovePos(pos, move);
@@ -48,8 +49,21 @@ module.exports = (req, res) => {
     }
   });
 
+  results.forEach(one => {
+    movement.forEach(move => {
+      const next = getNextMovePos(one, move);
+
+      if (next && !semiResults.includes(next)) {
+        semiResults.push(next);
+      }
+    })
+  })
+
   res.status(200).json({
     success: true,
-    data: results,
+    data: {
+      first: results,
+      second: semiResults,
+    },
   });
 };

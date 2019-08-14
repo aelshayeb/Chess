@@ -55,8 +55,29 @@ describe('Movement Api:', () => {
       .expect(200)
       .end((err, res) => {
         if (err) return done(err);
-        expect(res.body.data).to.be.an('array');
-        expect(res.body.data).to.deep.equal(['B6', 'B2', 'C5', 'C3']);
+        expect(res.body.data).to.be.an('object');
+        expect(res.body.data).to.deep.equal({
+          first: ['B6', 'B2', 'C5', 'C3'],
+          second: [
+            'C8',
+            'C4',
+            'A8',
+            'A4',
+            'D7',
+            'D5',
+            'D3',
+            'D1',
+            'B7',
+            'B3',
+            'E6',
+            'E4',
+            'A6',
+            'B5',
+            'B1',
+            'E2',
+            'A2',
+          ],
+        });
         done();
       });
   });
