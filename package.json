@@ -1,0 +1,28 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "Test",
+  "main": "server.js",
+  "scripts": {
+    "client:dev": "npm start --prefix client",
+    "start": "npm run server:prod",
+    "server:dev": "nodemon ./server.js",
+    "server:prod": "node ./server.js",
+    "dev": "concurrently \"npm run server:dev\" \"npm run client:dev\"",
+    "test": "mocha ./api/getMove.test.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "compression": "^1.7.3",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "morgan": "^1.9.1"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "concurrently": "^4.1.0",
+    "mocha": "^6.2.0",
+    "nodemon": "^1.18.9",
+    "supertest": "^4.0.2"
+  }
+}
